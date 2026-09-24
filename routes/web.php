@@ -1,20 +1,13 @@
 <?php
 
+use App\Http\Controllers\BasicController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('static.home');
-})->name('home');
+Route::get('/', [BasicController::class, 'index'])->name('home');
 
-Route::get('/about', function () {
-    return view('static.about');
-})->name('about');
+Route::get('/about', [BasicController::class, 'about'])->name('about');
 
-Route::get('/contact', function () {
-    return view('static.contact');
-})->name('contact');
+Route::get('/contact', [BasicController::class, 'contact'])->name('contact');
 
-Route::post('/contact', function () {
-    dd(Request::all());
-})->name('contact.post');
+Route::post('/contact', [BasicController::class, 'submit'])->name('contact.post');
